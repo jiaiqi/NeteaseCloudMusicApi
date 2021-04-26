@@ -126,14 +126,14 @@ fs.readdirSync(path.join(__dirname, 'module'))
 const port = process.env.PORT || 3000
 const host = process.env.HOST || ''
 
-const httpsOption = {
-  key: fs.readFileSync("./https/2_api.jiaiqi.cn.key"),
-  cert: fs.readFileSync("./https/1_api.jiaiqi.cn_bundle.crt")
-}
+// const httpsOption = {
+//   key: fs.readFileSync("./https/2_api.jiaiqi.cn.key"),
+//   cert: fs.readFileSync("./https/1_api.jiaiqi.cn_bundle.crt")
+// }
 
 app.server = app.listen(port, host, () => {
   console.log(`server running @ http://${host ? host : 'localhost'}:${port}`)
 })
-app.server = https.createServer(httpsOption, app).listen(443)
+// app.server = https.createServer(httpsOption, app).listen(443)
 
 module.exports = app
