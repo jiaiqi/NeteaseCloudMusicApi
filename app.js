@@ -29,7 +29,7 @@ app.use((req, res, next) => {
   if (req.path !== '/' && !req.path.includes('.')) {
     res.set({
       'Access-Control-Allow-Credentials': true,
-      'Access-Control-Allow-Origin':  '*',
+      'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
       'Access-Control-Allow-Methods': '*',
       'Content-Type': 'application/json; charset=utf-8',
@@ -54,13 +54,13 @@ app.use((req, res, next) => {
 // cookie parser
 app.use((req, res, next) => {
   req.cookies = {}
-  ;(req.headers.ticket || '').split(/\s*;\s*/).forEach((pair) => {
-    let crack = pair.indexOf('=')
-    if (crack < 1 || crack == pair.length - 1) return
-    req.cookies[
-      decodeURIComponent(pair.slice(0, crack)).trim()
-    ] = decodeURIComponent(pair.slice(crack + 1)).trim()
-  })
+    ; (req.headers.ticket || '').split(/\s*;\s*/).forEach((pair) => {
+      let crack = pair.indexOf('=')
+      if (crack < 1 || crack == pair.length - 1) return
+      req.cookies[
+        decodeURIComponent(pair.slice(0, crack)).trim()
+      ] = decodeURIComponent(pair.slice(crack + 1)).trim()
+    })
   next()
 })
 
@@ -127,8 +127,8 @@ const port = process.env.PORT || 3000
 const host = process.env.HOST || ''
 
 const httpsOption = {
-    key : fs.readFileSync("./https/2_api.jiaiqi.cn.key"),
-    cert: fs.readFileSync("./https/1_api.jiaiqi.cn_bundle.crt")
+  key: fs.readFileSync("./https/2_api.jiaiqi.cn.key"),
+  cert: fs.readFileSync("./https/1_api.jiaiqi.cn_bundle.crt")
 }
 
 app.server = app.listen(port, host, () => {
